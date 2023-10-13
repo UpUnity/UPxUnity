@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 111910282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 12.63, y: 1.93, z: 0}
+  m_LocalPosition: {x: 14.1, y: 1.93, z: -4.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,8 +271,8 @@ Transform:
   m_GameObject: {fileID: 164633774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.97, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -2.977, z: 0}
+  m_LocalScale: {x: 1, y: 0.54, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1316187842}
@@ -428,13 +428,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: cyberpunk
+  mTrackableName: komi
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/upx.xml
-  mAspectRatio: 0.56
+  mDataSetPath: Vuforia/baldurgoty.xml
+  mAspectRatio: 0.7346369
   mImageTargetType: 0
-  mWidth: 22
-  mHeight: 12.32
+  mWidth: 20
+  mHeight: 14.692738
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -471,8 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 318759864}
   mHiddenRoot: {fileID: 0}
-  mTargetName: cyberpunk
-  mDatasetName: Vuforia/upx.xml
+  mTargetName: komi
+  mDatasetName: Vuforia/baldurgoty.xml
   mCastedBehaviour: {fileID: 318759864}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -598,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 965001954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0.76, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -723,8 +723,8 @@ MonoBehaviour:
   trianglePrefab: {fileID: 164633774}
   rectanglePrefab: {fileID: 1738482645}
   circlePrefab: {fileID: 1900713177}
+  imageTarget: {fileID: 965001955}
   spawnInterval: 2
-  imageTarget: {fileID: 1316187842}
   moveSpeed: 2
 --- !u!1 &1316187841
 GameObject:
@@ -752,7 +752,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1196371947}
@@ -894,8 +894,8 @@ Transform:
   m_GameObject: {fileID: 1900713177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.97, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3.044, z: 0}
+  m_LocalScale: {x: 1, y: 1.17, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1316187842}

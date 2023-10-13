@@ -8,20 +8,15 @@ public class GenerateForms : MonoBehaviour
     public GameObject trianglePrefab;  // Prefab for the triangle shape
     public GameObject rectanglePrefab; // Prefab for the rectangle shape
     public GameObject circlePrefab;    // Prefab for the circle shape
-    public float spawnInterval = 2.0f; // Time interval for spawning shapes
     public Transform imageTarget;
+    public float spawnInterval = 2.0f; // Time interval for spawning shapes
     public float moveSpeed = 2.0f; // Speed of movement
 
-    private Vector3 startPosition;
     private Vector3 endPosition;
 
     private void Start()
     {
-        startPosition = imageTarget.position - (imageTarget.localScale.z * Vector3.forward) / 2;
         endPosition = imageTarget.position;
-        endPosition.x += 15f;
-        endPosition.y = imageTarget.position.y;
-        Debug.Log(imageTarget.position);
         StartCoroutine(SpawnShapes());
     }
 
@@ -53,9 +48,11 @@ public class GenerateForms : MonoBehaviour
 
     IEnumerator MoveObject(GameObject objectToMove)
     {
-        while (objectToMove.transform.position != endPosition)
+        Vector3 targetPosition = new Vector3(endPosition.x, objectToMove.transform.position.y, objectToMove.transform.position.z);
+
+        while (objectToMove.transform.position != targetPosition)
         {
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, endPosition, moveSpeed * Time.deltaTime);
+            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
