@@ -17,6 +17,7 @@ public class GenerateForms : MonoBehaviour
     private void Start()
     {
         endPosition = imageTarget.position;
+        endPosition.x -= 15f;
         StartCoroutine(SpawnShapes());
     }
 
