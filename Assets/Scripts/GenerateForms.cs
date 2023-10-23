@@ -1,65 +1,49 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 public class GenerateForms : MonoBehaviour
 {
-    public GameObject trianglePrefab;  // Prefab for the triangle shape
-    public GameObject rectanglePrefab; // Prefab for the rectangle shape
-    public GameObject circlePrefab;    // Prefab for the circle shape
+    public GameObject trianglePrefab; 
+    public GameObject rectanglePrefab;
+    public GameObject circlePrefab;
     public Transform imageTarget;
-    public float spawnInterval = 2.0f; // Time interval for spawning shapes
-    public float moveSpeed = 2.0f; // Speed of movement
-
-    private Vector3 endPosition;
+    public float spawnInterval = 4.0f;
 
     private void Start()
     {
-        endPosition = imageTarget.position;
-        StartCoroutine(SpawnShapes());
+        trianglePrefab.SetActive(false);
+        rectanglePrefab.SetActive(false);
+        circlePrefab.SetActive(false);
+        StartCoroutine(SpawnAndAnimateObjects());
     }
 
-    IEnumerator SpawnShapes()
+    IEnumerator SpawnAndAnimateObjects()
     {
         while (true)
         {
-            // Randomly choose which shape to spawn
             GameObject shapeToSpawn = GetRandomShape();
 
-            if (shapeToSpawn != null)
-            {
-                // Instantiate the selected shape on the AR ImageTarget with the random position.
-                Vector3 spawnPosition = imageTarget.position;
-                spawnPosition.x -= 15f;
-                
-                Quaternion spawnRotation = imageTarget.rotation;
+            GameObject spawnedObject = Instantiate(shapeToSpawn, imageTarget.position, imageTarget.rotation);
+            spawnedObject.SetActive(true);
+            spawnedObject.transform.parent = imageTarget;
 
-                GameObject spawnedObject = Instantiate(shapeToSpawn, spawnPosition, spawnRotation);
+            Animate(spawnedObject);
 
-                StartCoroutine(MoveObject(spawnedObject));
-            }
-
-            // Wait for the specified spawn interval before spawning the next shape
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
 
-    IEnumerator MoveObject(GameObject objectToMove)
+    private void Animate(GameObject spawnedObject)
     {
-        Vector3 targetPosition = new Vector3(endPosition.x, objectToMove.transform.position.y, objectToMove.transform.position.z);
+        Animator animator = spawnedObject.GetComponent<Animator>();
+        animator.SetTrigger("MoveObject");
 
-        while (objectToMove.transform.position != targetPosition)
-        {
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        Destroy(objectToMove);
+        float delayToDestroy = 8.0f;
+        Destroy(spawnedObject, delayToDestroy);
     }
 
-    GameObject GetRandomShape()
+    private GameObject GetRandomShape()
     {
         int randomShape = Random.Range(0, 3);
 
@@ -68,7 +52,7 @@ public class GenerateForms : MonoBehaviour
             0 => trianglePrefab,
             1 => rectanglePrefab,
             2 => circlePrefab,
-            _ => null,
+            _ => throw new System.NotImplementedException(),
         };
     }
 }
